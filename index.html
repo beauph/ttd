@@ -8,24 +8,26 @@
   <body>
     <button onclick="encrypt()">Encrypt Me</button>
     <button onclick="decrypt()">Decrypt Me</button>
+	  
+	  
     <p id="encrypt"></p>
+	  <p id="decrypt"></p>
     
     <div id="qrcode"></div>
  
   </body>
   <script type="text/javascript">
-    function encrypt(message = 'Hello World', key = 'dsdasdddsdsdafdfjyjtyjhjgfgdg'){
-    var message = CryptoJS.AES.encrypt(message, key);
+    function encrypt(message = 'Hello World', key = '123456789'){
+    var message = CryptoJS.HmacSHA256(message, key);
       document.getElementById("encrypt").innerHTML = message.toString();
 }
-function decrypt(message = '', key = ''){
-    var code = CryptoJS.AES.decrypt(message, key);
+	  
+function decrypt(message = document.getElementById("encrypt").innerHTML, key = '123456789'){
+    var code = CryptoJS.HmacSHA256.decrypt(message, key);
     var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
-
     return decryptedMessage;
+	 document.getElementById("decrypt").innerHTML = decryptedMessage;
 }
-console.log(encrypt('Hello World'));
-console.log(decrypt('U2FsdGVkX1/0oPpnJ5S5XTELUonupdtYCdO91v+/SMs='))
   </script>
   
   <script type="text/javascript">
