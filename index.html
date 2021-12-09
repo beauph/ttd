@@ -7,11 +7,12 @@
   <body>
     <button onclick="encrypt()">Encrypt Me</button>
     <button onclick="decrypt()">Decrypt Me</button>
+    <p id="encrypt"></p>
   </body>
   <script>
     function encrypt(message = 'Hello World', key = 'dsdasdddsdsdafdfjyjtyjhjgfgdg'){
     var message = CryptoJS.AES.encrypt(message, key);
-    return message.toString();
+      document.getElementById("encrypt").innerHTML = message.toString();
 }
 function decrypt(message = '', key = ''){
     var code = CryptoJS.AES.decrypt(message, key);
