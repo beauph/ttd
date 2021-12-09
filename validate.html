@@ -1,0 +1,16 @@
+<html>
+  <head>
+  <script>
+    function encrypt(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const hash = urlParams.get('hash');
+    return hash;
+      document.getElementById("validate") = hash;
+      }
+  </script>
+  </head>
+  <body onLoad="validate()">
+    <p id="validate"></p>
+  </body>
+ </html>
