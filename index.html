@@ -18,12 +18,12 @@
   </body>
   <script type="text/javascript">
     function encrypt(message = 'Hello World', key = '123456789'){
-    var message = CryptoJS.HmacSHA256(message, key);
+    var message = CryptoJS.AES-256.encrypt(message, key);
       document.getElementById("encrypt").innerHTML = message.toString();
 }
 	  
 function decrypt(message = document.getElementById("encrypt").innerHTML, key = '123456789'){
-    var code = CryptoJS.HmacSHA256.decrypt(message, key);
+    var code = CryptoJS.AES-256.decrypt(message, key);
     var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
     return decryptedMessage;
 	 document.getElementById("decrypt").innerHTML = decryptedMessage;
