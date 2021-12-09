@@ -24,15 +24,16 @@ function decrypt(){
     var decryptedteks = code.toString(CryptoJS.enc.Utf8);
     const teks = 'Digital signature memiliki data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
-    var validate = function(decryptedteks) {
-     if (decryptedteks != "") {
-    return decryptedMessage;
+    var validate = function(valid) {
+    if (valid != '') {
+        return decryptedMessage;
     } else {
-    return "Digital Signature Invalid!";
+        return "Signature Invalid!";
     }
-}
+   }
+   console.log(validate(decryptedteks));
 
-    document.getElementById("decrypt").innerHTML = validate;
+   document.getElementById("decrypt").innerHTML = validate;
 }
   </script>
   
