@@ -22,14 +22,14 @@
   </body>
 <script type="text/javascript">
     function encrypt(){
-	    var nama = document.getElementById("nama").innerHTML;
-	    var email = document.getElementById("email").innerHTML;
-	    var nik = document.getElementById("nik").innerHTML;
-	    var date = new Date();
-    var message = nama.concat(email,nik,date);
+	    const nama = document.getElementById("nama").innerHTML;
+	    const email = document.getElementById("email").innerHTML;
+	    const nik = document.getElementById("nik").innerHTML;
+	    const date = new Date();
+    const message = nama.concat(email,nik,date);
     var key = 'httpwwwbeafbs2021';
-    var message = CryptoJS.AES.encrypt(message, key);
-	var qrcode = new QRCode(message.toString(), {
+    var hash = CryptoJS.AES.encrypt(message, key);
+	var qrcode = new QRCode(hash.toString(), {
 	text: text,
 	width: 128,
 	height: 128,
