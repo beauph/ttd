@@ -22,9 +22,17 @@ function decrypt(){
     const key = 'httpwwwbeafbs2021';
     var code = CryptoJS.AES.decrypt(hash, key);
     var decryptedteks = code.toString(CryptoJS.enc.Utf8);
-    const teks = 'Digital signature valid dengan data sebagai berikut: ';
+    const teks = 'Digital signature memiliki data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
-    document.getElementById("decrypt").innerHTML = decryptedMessage;
+    var validate = function(decryptedteks) {
+     if (decryptedteks != "") {
+    return decryptedMessage;
+    } else {
+    return "Digital Signature Invalid!";
+    }
+}
+
+    document.getElementById("decrypt").innerHTML = validate;
 }
   </script>
   
