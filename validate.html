@@ -6,7 +6,7 @@
     
   </head>
   <body>
-    <p>Masukan Tandatangan digital hasil scan QR code untuk mengecek keaslian tandatngan!</p><br/>
+    <p>Masukan Code tandatangan digital hasil scan QR code untuk mengecek keaslian tandatngan!</p><br/>
 <input type="text" id="hash" name="hash"><br>    
 	  
     <button onclick="decrypt()">Validate</button>
@@ -18,12 +18,14 @@
   </body>
 <script type="text/javascript">  
 function decrypt(){
-     var key = 'httpwwwbeafbs2021';
-     var message = document.getElementById("hash").innerHTML;
-    var code = CryptoJS.AES.decrypt(message, key);
-    var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
+    const hash = document.getElementById("hash").innerHTML; 
+    const key = 'httpwwwbeafbs2021';
+    var code = CryptoJS.AES.decrypt(hash, key);
+    var decryptedteks = code.toString(CryptoJS.enc.Utf8);
+    const teks = 'Digital signature valid dengan data sebagai berikut: ';
+    const decryptedMessage = teks.concat(' ',decryptedteks);
     return decryptedMessage;
-	 document.getElementById("decrypt").innerHTML = decryptedMessage;
+    document.getElementById("decrypt").innerHTML = decryptedMessage;
 }
   </script>
   
