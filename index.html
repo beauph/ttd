@@ -6,21 +6,27 @@
     
   </head>
   <body>
-    <button onclick="encrypt()">Encrypt Me</button>
+	  
+<input type="text" id="nama" name="nama"><br>  
+<button onclick="encrypt()">Encrypt Me</button>
+	  
+	  
     <button onclick="decrypt()">Decrypt Me</button>
-	  <button onclick="qr()">QR</button>
+    <button onclick="qr()">QR</button><br/>
 	  
 	  
-    <p id="encrypt"></p>
-	  <p id="decrypt"></p>
+    <p id="encrypt"></p><br/>
+	  <p id="decrypt"></p><br/>
     
     <div id="qrcode"></div>
  
   </body>
-  <script type="text/javascript">
-    function encrypt(message = 'Hello World', key = '123456789'){
+<script type="text/javascript">
+    function encrypt(){
+    var message = document.getElementById("nama").innerHTML;
+    var key = 'httpwwwbeafbs2021';
     var message = CryptoJS.AES.encrypt(message, key);
-      document.getElementById("encrypt").innerHTML = message.toString();
+    document.getElementById("encrypt").innerHTML = message.toString();
 }
 	  
 function decrypt(){
@@ -40,7 +46,7 @@ function decrypt(){
 	text: text,
 	width: 128,
 	height: 128,
-	colorDark : "#5868bf",
+	colorDark : "#000000",
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
 });
