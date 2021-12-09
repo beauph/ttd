@@ -8,6 +8,7 @@
   <body>
     <button onclick="encrypt()">Encrypt Me</button>
     <button onclick="decrypt()">Decrypt Me</button>
+	  <button onclick="qr()">QR</button>
 	  
 	  
     <p id="encrypt"></p>
@@ -22,7 +23,9 @@
       document.getElementById("encrypt").innerHTML = message.toString();
 }
 	  
-function decrypt(message = document.getElementById("encrypt").innerHTML, key = '123456789'){
+function decrypt(){
+     var key = '123456789';
+     var message = document.getElementById("encrypt").innerHTML;
     var code = CryptoJS.AES.decrypt(message, key);
     var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
     return decryptedMessage;
@@ -31,6 +34,7 @@ function decrypt(message = document.getElementById("encrypt").innerHTML, key = '
   </script>
   
   <script type="text/javascript">
+	  function qr(){
   var text = document.getElementById("encrypt").innerHTML;
   var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: text,
@@ -40,5 +44,8 @@ function decrypt(message = document.getElementById("encrypt").innerHTML, key = '
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
 });
+	  return qrcode;
+	  ocument.getElementById("qrcode").innerHTML = qrcode;
+	  }
 </script>
 </html>
