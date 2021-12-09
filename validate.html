@@ -1,16 +1,30 @@
 <html>
   <head>
-  <script>
-    function validate(){
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const hash = urlParams.get('hash');
-    return hash;
-      document.getElementById("validate").innerHTML = hash;
-      }
-  </script>
+   <title>TTD Digital</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
   </head>
-  <body onLoad="validate()">
-    <p id="validate"></p>
+  <body>
+    <p>Masukan Tandatangan digital hasil scan QR code untuk mengecek keaslian tandatngan!</p><br/>
+<input type="text" id="hash" name="hash"><br>    
+	  
+    <button onclick="decrypt()">Validate</button>
+  
+
+	  <p id="decrypt"></p><br/>
+
+ 
   </body>
- </html>
+<script type="text/javascript">  
+function decrypt(){
+     var key = 'httpwwwbeafbs2021';
+     var message = document.getElementById("hash").innerHTML;
+    var code = CryptoJS.AES.decrypt(message, key);
+    var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
+    return decryptedMessage;
+	 document.getElementById("decrypt").innerHTML = decryptedMessage;
+}
+  </script>
+  
+</html>
