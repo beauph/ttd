@@ -20,11 +20,11 @@
   </body>
 <script type="text/javascript">
     function encrypt(){
-	    const nama = document.getElementById("nama").innerHTML;
-	    const email = document.getElementById("email").innerHTML;
-	    const nik = document.getElementById("nik").innerHTML;
-	    const date = new Date();
-    const message = nama.concat(email,nik,date);
+	    var nama = document.getElementById("nama").innerHTML;
+	    var email = document.getElementById("email").innerHTML;
+	    var nik = document.getElementById("nik").innerHTML;
+	    var date = new Date();
+    var message = nama + email + nik + date;
     var key = 'httpwwwbeafbs2021';
     var hash = CryptoJS.AES.encrypt(message, key);
     var stringh = hash.toString();
