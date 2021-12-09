@@ -18,13 +18,12 @@
   </body>
 <script type="text/javascript">  
 function decrypt(){
-    const hash = document.getElementById("hash").innerHTML; 
+    const hash = document.getElementById('hash').value; 
     const key = 'httpwwwbeafbs2021';
     var code = CryptoJS.AES.decrypt(hash, key);
     var decryptedteks = code.toString(CryptoJS.enc.Utf8);
     const teks = 'Digital signature valid dengan data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
-    return decryptedMessage;
     document.getElementById("decrypt").innerHTML = decryptedMessage;
 }
   </script>
