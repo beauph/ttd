@@ -12,10 +12,8 @@
 <p>NIK :</p><input type="number" id="nik" name="nik"><br/><br/>
 <button onclick="encrypt()">Buat Digital Signature</button>  
 
-	  
-	  
+    <p>Digital Signature Code</p> <br/>
     <p id="encrypt"></p><br/>
-	  <p id="decrypt"></p><br/>
     
     <div id="qrcode"></div>
  
@@ -38,8 +36,8 @@
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
 });
-	  return qrcode;
-	  ocument.getElementById("qrcode").innerHTML = qrcode;
+	  return stringh;
+	  document.getElementById("encrypt").innerHTML = stringh;
 }
 	 
   </script>
