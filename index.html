@@ -11,7 +11,7 @@
 <p>Email :</p><input type="text" id="email" name="email"><br/>  
 <p>NIK :</p><input type="number" id="nik" name="nik"><br/>
 <button onclick="encrypt()">Buat Digital Signature</button>  
-<button onclick="qr()">Buat QR Code</button><br/>
+
 	  
 	  
     <p id="encrypt"></p><br/>
@@ -29,8 +29,9 @@
     const message = nama.concat(email,nik,date);
     var key = 'httpwwwbeafbs2021';
     var hash = CryptoJS.AES.encrypt(message, key);
-	var qrcode = new QRCode(hash.toString(), {
-	text: text,
+    var stringh = hash.toString();
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: stringh,
 	width: 128,
 	height: 128,
 	colorDark : "#000000",
