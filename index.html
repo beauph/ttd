@@ -6,13 +6,12 @@
     
   </head>
   <body>
-	  
-<input type="text" id="nama" name="nama"><br>  
-<button onclick="encrypt()">Encrypt Me</button>
-	  
-	  
-    <button onclick="decrypt()">Decrypt Me</button>
-    <button onclick="qr()">QR</button><br/>
+	  <p>Input data berikut untuk membuat digital signature!</p><br/>
+<p>Nama :</p><input type="text" id="nama" name="nama"><br/>
+<p>Email :</p><input type="text" id="email" name="email"><br/>  
+<p>NIK :</p><input type="number" id="nik" name="nik"><br/>
+<button onclick="encrypt()">Buat Digital Signature</button>  
+<button onclick="qr()">Buat QR Code</button><br/>
 	  
 	  
     <p id="encrypt"></p><br/>
@@ -23,26 +22,14 @@
   </body>
 <script type="text/javascript">
     function encrypt(){
-    var message = document.getElementById("nama").innerHTML;
+	    var nama = document.getElementById("nama").innerHTML;
+	    var email = document.getElementById("email").innerHTML;
+	    var nik = document.getElementById("nik").innerHTML;
+	    var date = new Date();
+    var message = nama.concat(email,nik,date);
     var key = 'httpwwwbeafbs2021';
     var message = CryptoJS.AES.encrypt(message, key);
-    document.getElementById("encrypt").innerHTML = message.toString();
-}
-	  
-function decrypt(){
-     var key = '123456789';
-     var message = document.getElementById("encrypt").innerHTML;
-    var code = CryptoJS.AES.decrypt(message, key);
-    var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
-    return decryptedMessage;
-	 document.getElementById("decrypt").innerHTML = decryptedMessage;
-}
-  </script>
-  
-  <script type="text/javascript">
-	  function qr(){
-  var text = document.getElementById("encrypt").innerHTML;
-  var qrcode = new QRCode(document.getElementById("qrcode"), {
+	var qrcode = new QRCode(message.toString(), {
 	text: text,
 	width: 128,
 	height: 128,
@@ -52,6 +39,8 @@ function decrypt(){
 });
 	  return qrcode;
 	  ocument.getElementById("qrcode").innerHTML = qrcode;
-	  }
-</script>
+}
+	 
+  </script>
+  
 </html>
