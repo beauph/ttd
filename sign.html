@@ -30,14 +30,14 @@
     var hash = CryptoJS.AES.encrypt(message, key);
     var base64 = CryptoJS.enc.Base64.stringify(hash);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: base64,
+	text: hash,
 	width: 128,
 	height: 128,
 	colorDark : "#000000",
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
 });
-   document.getElementById("encrypt").innerHTML = stringh;
+   document.getElementById("encrypt").innerHTML = hash;
 }
 	 
   </script>
