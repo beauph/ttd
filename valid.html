@@ -18,10 +18,9 @@
   </body>
 <script type="text/javascript">  
 function decrypt(){
-     var base64 = document.getElementById('hash').value; 
-     var array = CryptoJS.enc.Base64.parse(base64);
+     var hash = document.getElementById('hash').value; 
     const key = 'httpwwwbeafbs2021';
-    var code = CryptoJS.AES.decrypt(array, key);
+    var code = CryptoJS.AES.decrypt(hash, key);
     var decryptedteks = code.toString(CryptoJS.enc.Utf8);
     const teks = 'Digital signature valid dan memiliki data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
