@@ -29,7 +29,8 @@
     var key = 'httpwwwbeafbs2021';
     var hash = CryptoJS.AES.encrypt(message, key);
     var stringh = hash.toString();
-    var b64 = CryptoJS.enc.Base64.stringify(stringh);
+    var parse = CryptoJS.enc.Base64.parse(stringh);
+    var b64 = CryptoJS.enc.Base64.stringify(parse);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: b64,
 	width: 128,
