@@ -1,0 +1,45 @@
+<html>
+  <head>
+   <title>TTD Digital</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+  </head>
+  <body>
+	  <p>Input data berikut untuk membuat digital signature!</p><br/>
+<p>Nama :</p><input type="text" id="nama" name="nama"><br/>
+<p>Email :</p><input type="text" id="email" name="email"><br/>  
+<p>NIK :</p><input type="number" id="nik" name="nik"><br/><br/>
+<button onclick="encrypt()">Buat Digital Signature</button>  
+
+    <p>Digital Signature Code</p> <br/>
+    <p id="encrypt"></p><br/>
+    
+    <div id="qrcode"></div>
+ 
+  </body>
+<script type="text/javascript">
+    function encrypt(){
+	    var nama = document.getElementById("nama").value;
+	    var email = document.getElementById("email").value;
+	    var nik = document.getElementById("nik").value;
+	    var date = new Date();
+	    var sep = ' | '
+    var message = nama + sep + email + sep + nik + sep + date;
+    var key = 'httpwwwbeafbs2021';
+    var hash = CryptoJS.AES.encrypt(message, key);
+    var base64 = CryptoJS.enc.Base64.stringify(hash);
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: base64,
+	width: 128,
+	height: 128,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+   document.getElementById("encrypt").innerHTML = stringh;
+}
+	 
+  </script>
+  
+</html>
