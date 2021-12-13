@@ -28,15 +28,8 @@ function decrypt(){
     var words = CryptoJS.enc.Base64.parse("hash");
     var words8 = CryptoJS.enc.Utf8.parse(words);
     var decryptedteks = CryptoJS.AES.decrypt(words8, key);
-	var data = decryptedteks.toString(CryptoJS.enc.Utf8);
-    let validate;
-if (data != '') {
-  validate = data;
-} else {
-  validate = "Digital Signature Invalid!";
-}
-   document.getElementById("decrypt").innerHTML = validate;
-}
+    var data = decryptedteks.toString(CryptoJS.enc.Utf8);
+    document.getElementById("decrypt").innerHTML = data;
   </script>
   
 </html>
