@@ -28,7 +28,7 @@
     var message = nama + sep + email + sep + nik + sep + date;
     var key = 'httpwwwbeafbs2021';
     var hash = CryptoJS.AES.encrypt(message, key);
-    var stringh = hash.toString();
+    var stringh = hash.toString(CryptoJS.enc.Base64);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: stringh,
 	width: 128,
