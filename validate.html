@@ -25,16 +25,16 @@
 function decrypt(){
     var hash = document.getElementById('hash').value; 
     var key = document.getElementById('key').value;
-	var base64 = CryptoJS.enc.Base64.parse(hash);; // string: 'SGVsbG8gd29ybGQ='
-    var decryptedteks = CryptoJS.AES.decrypt(base64, key);
-	var words = CryptoJS.enc.Utf8.stringify(decryptedteks); // WordArray object
+	var base64dec = CryptoJS.enc.Base64.parse(hash); // WordArray object
+            var words = CryptoJS.enc.Utf8.stringify(base64dec); // string: 'SGVsbG8gd29ybGQ='
+    var decryptedteks = CryptoJS.AES.decrypt(words, key);
     let validate;
-if (words != '') {
-  validate = words;
+if (decryptedteks != '') {
+  validate = decryptedteks;
 } else {
   validate = "Digital Signature Invalid!";
 }
-   document.getElementById("decrypt").innerHTML = words;
+   document.getElementById("decrypt").innerHTML = decryptedteks;
 }
   </script>
   
