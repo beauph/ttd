@@ -1,6 +1,8 @@
 <html>
   <head>
    <title>Validate Digital Signature</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.js"></script>
@@ -24,7 +26,7 @@ function decrypt(){
     const hash = document.getElementById('hash').value; 
     const key = document.getElementById('key').value;
     var code = CryptoJS.AES.decrypt(hash, key);
-    var decryptedteks = code.toString(CryptoJS.enc.Base64);
+    var decryptedteks = code.toString(CryptoJS.enc.Hex);
     const teks = 'Digital signature valid dan memiliki data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
     let validate;
