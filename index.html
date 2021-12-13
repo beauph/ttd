@@ -34,16 +34,17 @@
     var message = nama + sep + email + sep + nik + sep + date;
     var key = document.getElementById("key").value;    
     var hash = CryptoJS.AES.encrypt(message, key);
-	    var qrtext = hash.toString(CryptoJS.enc.Base64);
+	    var words = CryptoJS.enc.Utf8.parse(hash); // WordArray object
+            var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: qrtext,
+	text: base64,
 	width: 128,
 	height: 128,
 	colorDark : "#000000",
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
 });
-   document.getElementById("encrypt").innerHTML = qrtext;
+   document.getElementById("encrypt").innerHTML = base64;
 }
 	 
   </script>
