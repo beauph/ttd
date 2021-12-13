@@ -34,7 +34,7 @@
     var message = nama + sep + email + sep + nik + sep + date;
     var key = document.getElementById("key").value;    
     var hash = CryptoJS.AES.encrypt(message, key);
-	    var qrtext = hash.toString();
+	    var qrtext = hash.toString(CryptoJS.enc.Hex);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: qrtext,
 	width: 128,
