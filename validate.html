@@ -1,14 +1,17 @@
 <html>
   <head>
    <title>Validate Digital Signature</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     
   </head>
   <body>
     <p>Masukan Code tandatangan digital hasil scan QR code untuk mengecek keaslian tandatngan!</p><br/>
 <input type="text" id="hash" name="hash"><br/> <br/>    
-	  
+	  <p>Sandi :</p><input type="text" id="key" name="key"><br/><br/>
     <button onclick="decrypt()">Validate</button><br/>  <br/>  
   
 
@@ -19,9 +22,9 @@
 <script type="text/javascript">  
 function decrypt(){
     const hash = document.getElementById('hash').value; 
-    const key = 'httpwwwbeafbs2021';
+    const key = document.getElementById('key').value;
     var code = CryptoJS.AES.decrypt(hash, key);
-    var decryptedteks = code.toString(CryptoJS.enc.Utf8);
+    var decryptedteks = code.toString(CryptoJS.enc.Base64);
     const teks = 'Digital signature valid dan memiliki data sebagai berikut: ';
     const decryptedMessage = teks.concat(' ',decryptedteks);
     let validate;
