@@ -1,7 +1,7 @@
 <html>
   <head>
    <title>TTD Digital</title>
-   <script src="hmac-sha256.js"></script>
+   <script src="https://beauph.github.io/ttd/hmac-sha256.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     
   </head>
@@ -30,7 +30,7 @@
     var hash = CryptoJS.AES.encrypt(message, key);
     var stringh = hash.toString();
 	    
-var hashmac = CryptoJS.HmacSHA256(email, "httpwwwbeafbs2021");
+var hashmac = CryptoJS.HmacSHA256("test", "secret").toString(CryptoJS.enc.Hex);
 var hashhmacstring = hashmac.toString(CryptoJS.enc.Hex);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: hashmac,
