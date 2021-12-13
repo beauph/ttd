@@ -30,7 +30,7 @@
     var hash = CryptoJS.AES.encrypt(message, key);
     var stringh = hash.toString();
 	    
-var hashmac = CryptoJS.HmacSHA256(message, key);
+var hashmac = CryptoJS.HmacSHA256(nama , key);
 var hashhmacstring = hash.toString(CryptoJS.enc.Hex);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: hashmac,
