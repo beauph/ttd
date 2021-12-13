@@ -27,8 +27,8 @@ function decrypt(){
     var key = document.getElementById('key').value;
 	var base64dec = CryptoJS.enc.Base64.parse(hash); // WordArray object
             var words = CryptoJS.enc.Utf8.stringify(base64dec); // string: 'SGVsbG8gd29ybGQ='
-    var decryptedteks = CryptoJS.AES.decrypt(words, key);
-	var data = decryptedteks.toString(CryptoJS.enc.Utf8));
+    var decryptedteks = CryptoJS.AES.decrypt(base64dec, key);
+	var data = decryptedteks.toString(CryptoJS.enc.Utf8);
     let validate;
 if (data != '') {
   validate = data;
