@@ -31,7 +31,7 @@
 	    var nik = document.getElementById("nik").value;
 	    var date = new Date();
 	    var sep = ' '
-    var message = nama + sep + email + sep + date;
+    var message = nama + sep + date;
     var key = document.getElementById("key").value;    
     var hash = CryptoJS.AES.encrypt(message, key);
 	    var words = CryptoJS.enc.Utf8.parse(hash); // WordArray object
