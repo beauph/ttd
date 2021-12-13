@@ -1,6 +1,8 @@
 <html>
   <head>
    <title>TTD Digital</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/core.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.js"></script>
@@ -31,7 +33,7 @@
 	    var sep = ' | '
     var message = nama + sep + email + sep + nik + sep + date;
     var key = document.getElementById("key").value;    
-    var hash = CryptoJS.AES.encrypt(message, key).toString(CryptoJS.r.enc.Base64);
+    var hash = CryptoJS.AES.encrypt(message, key).toString(CryptoJS.enc.Hex);
     var qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: hash,
 	width: 128,
